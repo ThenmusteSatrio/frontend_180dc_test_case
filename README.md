@@ -38,9 +38,9 @@ Selama pengembangan, ditemukan kendala teknis pada API backend resmi (`test-180d
 
 2. **Instal Dependensi:**
    ```bash
-    npm run dev
+    npm install
     # atau jika menggunakan pnpm
-    pnpm dev
+    pnpm install
 
 3. **Instal Dependensi:**
    ```bash
