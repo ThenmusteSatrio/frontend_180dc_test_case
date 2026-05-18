@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 180DC UNAIR - IT Analyst Test Case (Frontend)
 
-## Getting Started
+Repositori ini berisi solusi teknis untuk tes seleksi **IT Analyst** di **180 Degrees Consulting Universitas Airlangga**. Proyek ini difokuskan pada pengembangan antarmuka pengguna (Frontend) yang terintegrasi dengan REST API resmi, dengan penekanan pada penyelesaian masalah (*problem solving*) terkait kendala infrastruktur backend.
 
-First, run the development server:
+## Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Sistem Autentikasi**: Login dan Register menggunakan JWT (JSON Web Token).
+- **Manajemen Produk**: Menampilkan daftar produk dengan fitur pencarian, pengurutan (*sorting*), dan paginasi.
+- **Interceptors Axios**: Penanganan otomatis token Bearer pada setiap request dan redirect otomatis saat sesi berakhir (401/405).
+- **Advanced API Proxying**: Implementasi Next.js API Routes untuk mengatasi masalah CORS (*Cross-Origin Resource Sharing*) dan Preflight (OPTIONS) pada server produksi.
+- **Dual Mode Backend**: Kemampuan beralih antara API Vercel yang disediakan dan Backend kustom untuk memastikan ketersediaan layanan selama demonstrasi. link backend [https://github.com/ThenmusteSatrio/backend_180dc_test_case.git]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Teknologi yang Digunakan
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 (App Router)
+- **Bahasa**: TypeScript
+- **State Management & Fetching**: Axios & React Hooks
+- **Styling**: Tailwind CSS
+- **Tools**: Lucide React (Icons), LocalStorage (Token Persistance)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Arsitektur Solusi (Problem Solving)
 
-## Learn More
+Selama pengembangan, ditemukan kendala teknis pada API backend resmi (`test-180dc.vercel.app`):
+1. **CORS Error**: Browser memblokir permintaan langsung karena kebijakan keamanan.
+2. **405 Method Not Allowed**: Masalah pada penanganan metode `OPTIONS` (Preflight) saat menyertakan header Authorization.
+3. **500 Internal Server Error**: Terjadi pada endpoint *Post Product* meskipun payload sudah valid sesuai dokumentasi.
 
-To learn more about Next.js, take a look at the following resources:
+**Solusi yang diimplementasikan:**
+- Membuat **API Proxy** di `app/api/remote/[...path]/route.ts`. Ini memungkinkan permintaan dilakukan di sisi server (Node.js) sehingga melewati aturan CORS browser.
+- Menambahkan **Dual Backend Support** di instance Axios untuk memungkinkan transisi ke backend kustom (milik pengembang) jika server utama mengalami kendala fungsional, memastikan presentasi tetap berjalan lancar.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+##  Instalasi & Menjalankan Proyek
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone Repositori:**
+   ```bash
+   git clone [https://github.com/ThenmusteSatrio/frontend_180dc_test_case.git](https://github.com/ThenmusteSatrio/frontend_180dc_test_case.git)
+   cd frontend_180dc_test_case
 
-## Deploy on Vercel
+2. **Instal Dependensi:**
+   ```bash
+   npm install / pnpm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Instal Dependensi:**
+   ```bash
+   npm run dev / pnpm run dev
