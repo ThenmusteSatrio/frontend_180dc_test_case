@@ -33,7 +33,7 @@ Selama pengembangan, ditemukan kendala teknis pada API backend resmi (`test-180d
 
 1. **Clone Repositori:**
    ```bash
-   git clone [https://github.com/ThenmusteSatrio/frontend_180dc_test_case.git](https://github.com/ThenmusteSatrio/frontend_180dc_test_case.git)
+   git clone https://github.com/ThenmusteSatrio/frontend_180dc_test_case.git
    cd frontend_180dc_test_case
 
 2. **Instal Dependensi:**
