@@ -12,7 +12,7 @@ Repositori ini berisi solusi teknis untuk tes seleksi **IT Analyst** di **180 De
 
 ## Teknologi yang Digunakan
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Bahasa**: TypeScript
 - **State Management & Fetching**: Axios & React Hooks
 - **Styling**: Tailwind CSS
