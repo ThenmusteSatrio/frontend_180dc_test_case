@@ -38,8 +38,45 @@ Selama pengembangan, ditemukan kendala teknis pada API backend resmi (`test-180d
 
 2. **Instal Dependensi:**
    ```bash
-   npm install / pnpm install
+    npm run dev
+    # atau jika menggunakan pnpm
+    pnpm dev
 
 3. **Instal Dependensi:**
    ```bash
-   npm run dev / pnpm run dev
+   npm run dev 
+   # atau jika menggunakan pnpm
+    pnpm run dev
+
+## Konfigurasi Perpindahan Backend
+
+Proyek ini mendukung pergantian sumber data secara cepat melalui file `services/api.ts`. Hal ini memastikan aplikasi tetap fungsional jika salah satu server mengalami kendala.
+
+### Cara mengubah sumber API:
+
+1. Buka file `services/api.ts`.
+2. Ubah variabel `USE_CUSTOM_BACKEND`:
+   - `false`: Menggunakan API Vercel resmi melalui proxy `/api/remote`.
+   - `true`: Menggunakan Backend kustom lokal (`http://localhost:4000/api/v1`).
+
+```typescript
+const USE_CUSTOM_BACKEND = false; // Ubah ke true untuk beralih ke backend kustom
+
+## Struktur Folder
+
+Proyek ini menggunakan **Next.js App Router** dengan struktur folder yang mengutamakan pemisahan tanggung jawab (*Separation of Concerns*):
+
+```text
+├── app/
+│   ├── api/remote/           # Implementasi API Proxy (Next.js API Routes)
+│   ├── login/                # Halaman Autentikasi Login
+│   ├── register/             # Halaman Autentikasi Register
+│   └── products/             # Halaman Dashboard & Manajemen Produk
+├── components/               # Komponen UI (Re-usable Components)
+├── lib/
+│   ├── api.ts                # Konfigurasi Axios & Interceptors
+│   └── auth.ts               # Utilitas Manajemen Token (LocalStorage)
+├── services/
+│   └── product.service.ts    # Layer Abstraksi untuk pemanggilan API
+└── public/                   # Aset Statis (Logo, Ikon)
+
