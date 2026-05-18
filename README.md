@@ -74,9 +74,9 @@ Proyek ini menggunakan **Next.js App Router** dengan struktur folder yang mengut
 │   └── products/             # Halaman Dashboard & Manajemen Produk
 ├── components/               # Komponen UI (Re-usable Components)
 ├── lib/
-│   ├── api.ts                # Konfigurasi Axios & Interceptors
 │   └── auth.ts               # Utilitas Manajemen Token (LocalStorage)
 ├── services/
+│   ├── api.ts                # Konfigurasi Axios & Interceptors
 │   └── product.service.ts    # Layer Abstraksi untuk pemanggilan API
 └── public/                   # Aset Statis (Logo, Ikon)
 
